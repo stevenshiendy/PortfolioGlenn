@@ -19,8 +19,12 @@ export default function TopNav() {
       className="fixed top-0 left-0 right-0 z-[100] px-6 md:px-12 py-5 flex items-center justify-between bg-[#050505]/60 backdrop-blur-xl border-b border-white/5"
     >
       {/* Left: Logo */}
-      <a href="#home" className="font-playfair font-bold text-lg md:text-xl tracking-widest text-white hover:text-[#FF5C00] transition-colors uppercase">
-        Steven Glenn
+      <a href="#home" className="flex items-center hover:opacity-80 transition-opacity">
+        <img 
+          src="/Steven Glenn Logo.svg" 
+          alt="Steven Glenn Logo" 
+          className="h-6 md:h-7 w-auto pointer-events-none" 
+        />
       </a>
 
       {/* Middle: Chapters (hidden on very small screens) */}

@@ -47,7 +47,11 @@ export default function Home() {
   // "The Lens" section will use whileInView for edge animations and inverse out
 
   return (
-    <main id="home" className="min-h-screen bg-[#050505] text-white selection:bg-[#FF5C00] selection:text-white font-inter overflow-x-hidden">
+    <main 
+      id="home" 
+      className="min-h-screen bg-[#050505] text-white selection:bg-[#FF5C00] selection:text-white font-inter overflow-x-hidden"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       
       {/* CHAPTER 1: THE INTRODUCTION */}
       <section className="relative h-screen flex flex-col items-center justify-center px-6">
