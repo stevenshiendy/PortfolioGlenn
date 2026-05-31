@@ -323,22 +323,22 @@ export default function Home() {
       </section>
       {/* CHAPTER 3: THE LENS (Photography) */}
       <section id="lens" className="py-20 md:py-32 relative bg-[#0a0a0a] overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 md:px-20 relative z-20">
+        <div className="w-full max-w-[1800px] mx-auto px-2 md:px-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.5 }}
-            className="max-w-3xl text-center mx-auto mb-40"
+            className="max-w-3xl text-center mx-auto mb-16 md:mb-40"
           >
             <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CORE PILLARS</span>
-            <h2 className="font-playfair text-4xl md:text-6xl mb-12 leading-tight">Photography</h2>
+            <h2 className="font-playfair text-4xl md:text-6xl mb-12 leading-tight">Photography & Videography</h2>
             <div className="space-y-8 text-gray-400 text-base md:text-base leading-loose font-light text-left md:text-center">
               <p>
-                There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
+                There is a profound unspoken truth hidden in every photograph and frame of video. Through my lens, whether in still frames or motion, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
               </p>
               <p>
-                A moment is fleeting. It exists for a mere fraction of a second and then it is gone forever. But inside a frame, that moment is granted eternity. Whether capturing the gritty and rebellious energy of the Jackarmy photoshoot or documenting the subtle nuances of a quiet portrait, the core philosophy remains identical.
+                A moment is fleeting. It exists for a mere fraction of a second and then it is gone forever. But inside a frame, that moment is granted eternity. Whether capturing the gritty energy of a live event, documenting the subtle nuances of a portrait, or directing a compelling visual narrative on video, the core philosophy remains identical.
               </p>
               <p className="text-gray-200">
                 It is entirely about freezing time. It is about holding onto a feeling long after the reality has faded away.
@@ -347,34 +347,77 @@ export default function Home() {
           </motion.div>
 
           {/* Edge Reveal Image Section */}
-          <div className="w-full flex flex-row flex-wrap md:flex-nowrap items-center md:items-start justify-center gap-4 md:gap-16">
+          <div className="w-full flex flex-row flex-wrap items-center justify-center gap-2 md:gap-4 mt-10">
+            
+            {/* ITEM 1 */}
             <motion.div 
-              initial={{ opacity: 0, x: "-30vw" }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative order-1 md:order-1 w-[46%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+              className="relative w-[31%] md:flex-1 aspect-[9/16] rounded-lg md:rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image src="/images/Photography & Videography/JENETBDAY-4.JPG" alt="Event Photography" fill sizes="(max-width: 768px) 33vw, 20vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
+
+            {/* ITEM 2 (Center Video) */}
             <motion.div 
-              initial={{ opacity: 0, y: "30vh" }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative order-3 md:order-2 w-[75%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[90vh] mt-2 md:mt-0 rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 }}
+              className="relative w-[31%] md:flex-1 aspect-[9/16] rounded-lg md:rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <video 
+                src="/images/Photography & Videography/KJ 2.MP4" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2000ms]"
+              />
             </motion.div>
+
+            {/* ITEM 3 */}
             <motion.div 
-              initial={{ opacity: 0, x: "30vw" }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative order-2 md:order-3 w-[46%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+              className="relative w-[31%] md:flex-1 aspect-[9/16] rounded-lg md:rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image src="/images/Photography & Videography/Territory-4.jpg" alt="Creative Photography" fill sizes="(max-width: 768px) 33vw, 20vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
+
+            {/* ITEM 4 */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+              className="relative w-[31%] md:flex-1 aspect-[9/16] rounded-lg md:rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <video 
+                src="/images/Photography & Videography/ADERA 3.MOV" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-[2000ms]"
+              />
+            </motion.div>
+
+            {/* ITEM 5 */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.4 }}
+              className="relative w-[31%] md:flex-1 aspect-[9/16] rounded-lg md:rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Photography & Videography/DSC01890.JPG" alt="Photography Portrait" fill sizes="(max-width: 768px) 33vw, 20vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+
           </div>
         </div>
       </section>
