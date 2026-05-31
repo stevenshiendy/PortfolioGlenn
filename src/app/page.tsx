@@ -24,13 +24,7 @@ export default function Home() {
       videoRef.current.volume = 0.75;
       videoRef.current.muted = false;
       if (isVideoInView) {
-        // Try playing unmuted. If browser blocks it (no interaction), fallback to muted so it at least plays visually.
-        videoRef.current.play().catch(() => {
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            videoRef.current.play().catch(() => {});
-          }
-        });
+        videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
       }
@@ -169,6 +163,7 @@ export default function Home() {
                   src="/images/FYP Leader/FYPJinglevid.MOV" 
                   loop 
                   playsInline 
+                  controls
                   className="object-cover w-full h-full opacity-90 group-hover/media:opacity-100 transition-opacity duration-1000"
                 />
               </motion.div>
