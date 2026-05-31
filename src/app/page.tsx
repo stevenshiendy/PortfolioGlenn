@@ -51,7 +51,7 @@ export default function Home() {
             initial={{ opacity: 0, filter: "blur(20px)", scale: 0.9 }}
             animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
             transition={{ duration: 2.5, ease: "easeOut" }}
-            className="font-playfair text-2xl md:text-4xl font-bold tracking-tighter mb-10"
+            className="font-playfair text-5xl md:text-8xl lg:text-[8rem] font-black tracking-tighter mb-10 leading-none"
           >
             STEVEN GLENN SHIENDY
           </motion.h1>
@@ -272,8 +272,8 @@ export default function Home() {
 
       {/* Symmetric Grid Gallery for MC Images */}
       <section className="py-32 relative bg-[#050505]">
-        <div className="max-w-5xl mx-auto px-6 md:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="max-w-4xl mx-auto px-6 md:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
               { src: "/images/MC/Sagarmatha 9.0/MCSagarmatha9.0-1.jpg", title: "Sagarmatha 9.0" },
@@ -306,7 +306,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="w-full text-center mt-64 mb-32"
+            className="w-full text-center mt-32 mb-16"
           >
             <h3 className="font-playfair text-2xl md:text-4xl mb-8">Every stage is a conversation.</h3>
             <p className="text-lg md:text-xl text-gray-400 font-light tracking-widest">Every event is a memory.</p>
