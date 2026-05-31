@@ -9,6 +9,14 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isVideoInView = useInView(videoRef, { margin: "-20%" });
 
+  // Always force the user to start at the top on page load/refresh
+  useEffect(() => {
+    if (typeof window !== "undefined" && 'scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
 
 
   useEffect(() => {
@@ -51,7 +59,7 @@ export default function Home() {
             initial={{ opacity: 0, filter: "blur(20px)", scale: 0.9 }}
             animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
             transition={{ duration: 2.5, ease: "easeOut" }}
-            className="font-playfair text-5xl md:text-8xl lg:text-[8rem] font-black tracking-tighter mb-10 leading-none"
+            className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-10 leading-none"
           >
             STEVEN GLENN SHIENDY
           </motion.h1>
@@ -104,7 +112,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="font-playfair text-4xl md:text-5xl mb-16"
+            className="font-playfair text-4xl md:text-6xl mb-16"
           >
             Community Leadership
           </motion.h2>
@@ -130,27 +138,27 @@ export default function Home() {
             className="max-w-5xl mx-auto flex flex-col xl:flex-row gap-16 items-center relative z-10"
           >
             <div className="w-full xl:w-1/3">
-              <h3 className="font-playfair text-4xl md:text-5xl text-white mb-8">FYP Leader BINUSIAN 2029</h3>
+              <h3 className="font-playfair text-3xl md:text-5xl text-white mb-8">FYP Leader BINUSIAN 2029</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
               <p className="font-inter text-gray-400 text-lg md:text-base md:text-base leading-loose font-light">
                 Guiding and mentoring the next generation of students is a profound responsibility. It is a continuous journey of active listening, adapting to diverse needs, and helping others realize their own untapped potential through empathetic leadership. Watching individuals grow into confident contributors is the ultimate reward.
               </p>
             </div>
-            <div className="w-full xl:w-2/3 flex flex-col md:flex-row items-center justify-center gap-8 group/media">
+            <div className="w-full xl:w-2/3 flex flex-row items-center justify-center gap-2 md:gap-8 group/media">
               {/* Picture Layer */}
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.8 }}
-                className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
+                className="relative flex-1 md:w-auto md:h-[50vh] aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
               >
-                <Image src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
+                <Image src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
                 <div className="absolute inset-0 bg-black/20 group-hover/media:bg-transparent transition-colors duration-1000" />
               </motion.div>
               {/* Video Layer */}
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.8 }}
-                className="relative w-[70%] md:w-auto md:h-[50vh] aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] border border-white/10 bg-[#111] flex-shrink-0"
+                className="relative flex-1 md:w-auto md:h-[50vh] aspect-[9/16] rounded-xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] border border-white/10 bg-[#111]"
               >
                 <video 
                   ref={videoRef}
@@ -174,18 +182,18 @@ export default function Home() {
             transition={{ duration: 1.5 }}
             className="max-w-5xl mx-auto flex flex-col gap-16 items-center relative z-10"
           >
-            <div className="order-2 w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+            <div className="order-2 w-full flex flex-row flex-wrap md:flex-nowrap items-center justify-center gap-4 md:gap-10">
               {/* Left Photo */}
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
+                className="relative order-1 md:order-1 w-[46%] md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
                 <Image src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
 
               {/* Center Video */}
               <motion.div 
-                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,92,0,0.15)] bg-[#111]"
+                className="relative order-3 md:order-2 w-[75%] md:w-1/3 mt-2 md:mt-0 aspect-[3/4] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,92,0,0.15)] bg-[#111]"
               >
                 <video 
                   src="/images/Fostura/Steven Teaching.MOV" 
@@ -200,13 +208,13 @@ export default function Home() {
               {/* Right Photo */}
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
+                className="relative order-2 md:order-3 w-[46%] md:w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
                 <Image src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
             </div>
-            <div className="order-1 w-full max-w-3xl mx-auto text-center">
-              <h3 className="font-playfair text-2xl md:text-4xl text-white mb-8">Fostura</h3>
+            <div className="order-1 w-full max-w-4xl mx-auto text-center">
+              <h3 className="font-playfair text-3xl md:text-5xl text-white mb-8">Fostura</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8 mx-auto" />
               <p className="font-inter text-gray-400 text-base leading-loose font-light mb-6">
                 Spearheading community driven initiatives requires a vision that extends far beyond the individual. It is entirely about building a safe space where creativity seamlessly meets purpose. In Fostura, the mission is to ensure that every single individual feels a deep sense of belonging and empowerment to contribute their unique ideas.
@@ -243,7 +251,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-playfair text-2xl md:text-4xl mb-12 leading-tight"
+            className="font-playfair text-4xl md:text-6xl mb-12 leading-tight"
           >
             Master of Ceremonies
           </motion.h2>
@@ -263,7 +271,7 @@ export default function Home() {
             <p className="text-gray-200 font-medium">
               The stage isn't a pedestal. It is a bridge to truly get to know the people standing in front of me.
             </p>
-            <blockquote className="border-t border-b border-[#FF5C00]/30 py-8 my-16 font-playfair italic text-3xl text-gray-200">
+            <blockquote className="border-t border-b border-[#FF5C00]/30 py-8 my-8 font-playfair italic text-3xl text-gray-200">
               "It is not just about what is spoken. It is about the authentic human connection forged in those fleeting moments."
             </blockquote>
           </motion.div>
@@ -271,8 +279,8 @@ export default function Home() {
       </section>
 
       {/* Symmetric Grid Gallery for MC Images */}
-      <section className="py-32 relative bg-[#050505]">
-        <div className="max-w-4xl mx-auto px-6 md:px-20">
+      <section className="pt-8 pb-16 relative bg-[#050505]">
+        <div className="max-w-3xl mx-auto px-12 md:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
@@ -306,7 +314,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="w-full text-center mt-32 mb-16"
+            className="w-full text-center mt-16 mb-8"
           >
             <h3 className="font-playfair text-2xl md:text-4xl mb-8">Every stage is a conversation.</h3>
             <p className="text-lg md:text-xl text-gray-400 font-light tracking-widest">Every event is a memory.</p>
@@ -314,7 +322,7 @@ export default function Home() {
         </div>
       </section>
       {/* CHAPTER 3: THE LENS (Photography) */}
-      <section id="lens" className="py-40 md:py-64 relative bg-[#0a0a0a] overflow-hidden">
+      <section id="lens" className="py-20 md:py-32 relative bg-[#0a0a0a] overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-20 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -324,7 +332,7 @@ export default function Home() {
             className="max-w-3xl text-center mx-auto mb-40"
           >
             <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CORE PILLARS</span>
-            <h2 className="font-playfair text-4xl md:text-5xl mb-12 leading-tight">Photography</h2>
+            <h2 className="font-playfair text-4xl md:text-6xl mb-12 leading-tight">Photography</h2>
             <div className="space-y-8 text-gray-400 text-base md:text-base leading-loose font-light text-left md:text-center">
               <p>
                 There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
@@ -339,13 +347,13 @@ export default function Home() {
           </motion.div>
 
           {/* Edge Reveal Image Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative h-[120vh] md:h-[150vh]">
+          <div className="w-full flex flex-row flex-wrap md:flex-nowrap items-center md:items-start justify-center gap-4 md:gap-16">
             <motion.div 
               initial={{ opacity: 0, x: "-30vw" }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative order-1 md:order-1 w-[46%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
               <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
@@ -353,8 +361,8 @@ export default function Home() {
               initial={{ opacity: 0, y: "30vh" }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative order-3 md:order-2 w-[75%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[90vh] mt-2 md:mt-0 rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
             >
               <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
@@ -362,8 +370,8 @@ export default function Home() {
               initial={{ opacity: 0, x: "30vw" }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative order-2 md:order-3 w-[46%] md:w-1/3 aspect-[3/4] md:aspect-auto md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
               <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
@@ -442,7 +450,7 @@ export default function Home() {
           </a>
         </motion.div>
         
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 font-inter text-sm tracking-[0.3em] text-gray-500 relative z-10">
+        <div className="flex flex-row flex-wrap justify-center gap-6 md:gap-16 font-inter text-sm tracking-[0.3em] text-gray-500 relative z-10">
           <a href="https://linkedin.com/in/stevenglennshiendy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
             <IconBrandLinkedin stroke={1.5} className="w-5 h-5" />
             LINKEDIN
