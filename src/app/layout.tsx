@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Steven Glenn Shiendy | Master of Ceremony & Visual Storyteller",
-  description: "Portfolio of Steven Glenn Shiendy - Master of Ceremony, Visual Storyteller, and Leader.",
+  description: "Portfolio of Steven Glenn Shiendy - Master of Ceremony, Visual Storyteller, and Entrepreneur.",
   icons: {
     icon: "/Steven Glenn Logo.svg",
   },
