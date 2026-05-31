@@ -70,7 +70,7 @@ export default function Home() {
             <p className="font-playfair italic text-xl md:text-3xl text-gray-400">
               I bring events to life through public speaking, capture moments through photography, and build communities through leadership.
             </p>
-            <p className="text-sm md:text-base tracking-[0.5em] text-gray-500 uppercase mt-8">
+            <p className="text-[10px] sm:text-xs md:text-sm tracking-[0.2em] md:tracking-[0.5em] text-gray-500 uppercase mt-8 leading-loose">
               Master of Ceremony • Photographer & Videographer • Entrepreneur
             </p>
           </motion.div>
