@@ -71,7 +71,7 @@ export default function Home() {
               I bring events to life through public speaking, capture moments through photography, and build communities through leadership.
             </p>
             <p className="text-sm md:text-base tracking-[0.5em] text-gray-500 uppercase mt-8">
-              Emcee • Photographer • Leader
+              Master of Ceremony • Photographer & Videographer • Leader
             </p>
           </motion.div>
         </motion.div>
