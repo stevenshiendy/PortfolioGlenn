@@ -143,7 +143,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
               >
-                <Image unoptimized src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
+                <Image src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
                 <div className="absolute inset-0 bg-black/20 group-hover/media:bg-transparent transition-colors duration-1000" />
               </motion.div>
               {/* Video Layer */}
@@ -180,7 +180,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
-                <Image unoptimized src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+                <Image src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
 
               {/* Center Video */}
@@ -202,7 +202,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
-                <Image unoptimized src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+                <Image src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
             </div>
             <div className="order-1 w-full max-w-3xl mx-auto text-center">
@@ -292,7 +292,7 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 className="relative w-full aspect-[3/4] group rounded-2xl overflow-hidden shadow-2xl bg-[#111] will-change-transform will-change-opacity"
               >
-                <Image unoptimized src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
+                <Image src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
                 <div className="absolute inset-0 bg-transparent group-hover:bg-gray-900/60 transition-colors duration-1000 flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <h3 className="font-playfair text-2xl md:text-4xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
                 </div>
@@ -347,7 +347,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image unoptimized src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: "30vh" }}
@@ -356,7 +356,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
             >
-              <Image unoptimized src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, x: "30vw" }}
@@ -365,7 +365,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image unoptimized src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
           </div>
         </div>
@@ -393,7 +393,7 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
             >
-              <Image unoptimized 
+              <Image 
                 src="/images/Duta Bahasa BINUS 2025 Terbaik Dua Award.JPG" 
                 alt="Terbaik Dua Duta Bahasa BINUS 2025" 
                 fill 
