@@ -65,7 +65,7 @@ export default function Home() {
             transition={{ duration: 2.5, ease: "easeOut" }}
             className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-10 leading-none"
           >
-            STEVEN GLENN SHIENDY
+            Steven Glenn Shiendy
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
