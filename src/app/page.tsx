@@ -22,6 +22,7 @@ export default function Home() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = 0.75;
+      videoRef.current.muted = false;
       if (isVideoInView) {
         videoRef.current.play().catch(() => {});
       } else {
@@ -160,11 +161,8 @@ export default function Home() {
                 <video 
                   ref={videoRef}
                   src="/images/FYP Leader/FYPJinglevid.MOV" 
-                  autoPlay
-                  muted
                   loop 
                   playsInline 
-                  controls
                   className="object-cover w-full h-full opacity-90 group-hover/media:opacity-100 transition-opacity duration-1000"
                 />
               </motion.div>
