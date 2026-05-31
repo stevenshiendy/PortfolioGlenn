@@ -1,65 +1,462 @@
+"use client";
+
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
+import { useRef, useEffect, useState } from "react";
+import { IconBrandLinkedin, IconBrandInstagram, IconBrandYoutube } from "@tabler/icons-react";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isVideoInView = useInView(videoRef, { margin: "-20%" });
+
+  const middleLensRef = useRef<HTMLDivElement>(null);
+  const isMiddleLensInView = useInView(middleLensRef, { margin: "-20% 0px -20% 0px" });
+  const [hasMiddleEntered, setHasMiddleEntered] = useState(false);
+
+  useEffect(() => {
+    if (isMiddleLensInView) setHasMiddleEntered(true);
+  }, [isMiddleLensInView]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.volume = 0.5;
+      if (isVideoInView) {
+        // Try playing unmuted. If browser blocks it (no interaction), fallback to muted so it at least plays visually.
+        videoRef.current.play().catch(() => {
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(() => {});
+          }
+        });
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isVideoInView]);
+
+  // Parallax setup for Hero
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 800], [1, 0]);
+  const heroY = useTransform(scrollY, [0, 800], [0, 200]);
+
+  // (Horizontal scroll logic removed for a smoother vertical staggered gallery)
+
+  // "The Lens" section will use whileInView for edge animations and inverse out
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main id="home" className="min-h-screen bg-[#050505] text-white selection:bg-[#FF5C00] selection:text-white font-inter overflow-x-hidden">
+      
+      {/* CHAPTER 1: THE INTRODUCTION */}
+      <section className="relative h-screen flex flex-col items-center justify-center px-6">
+        <motion.div 
+          style={{ opacity: heroOpacity, y: heroY }}
+          className="text-center z-10 max-w-5xl"
+        >
+          <motion.h1 
+            initial={{ opacity: 0, filter: "blur(20px)", scale: 0.9 }}
+            animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+            transition={{ duration: 2.5, ease: "easeOut" }}
+            className="font-playfair text-5xl md:text-9xl font-bold tracking-tighter mb-10"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            STEVEN GLENN SHIENDY
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2.5, delay: 1.5 }}
+            className="flex flex-col gap-6"
           >
-            Documentation
+            <p className="font-playfair italic text-2xl md:text-4xl text-gray-400">
+              Every stage is a story. Every frame is a feeling.
+            </p>
+            <p className="text-sm md:text-base tracking-[0.5em] text-gray-500 uppercase mt-8">
+              Emcee • Photographer • Leader
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* Cinematic Down Arrow */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 3 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+        >
+          <span className="text-[10px] tracking-[0.3em] text-gray-600 uppercase">Begin the journey</span>
+          <motion.div
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[1px] h-16 bg-gradient-to-b from-[#FF5C00] to-transparent"
+          />
+        </motion.div>
+      </section>
+
+      {/* CHAPTER 2: THE VOICE (Extended Horizontal Scroll) */}
+      <section id="mc" className="bg-[#050505] pt-40 pb-20 relative z-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-20 text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block"
+          >
+            CHAPTER I
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-playfair text-4xl md:text-7xl mb-12 leading-tight"
+          >
+            The Voice
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+            className="space-y-8 text-gray-400 text-xl leading-loose font-light"
+          >
+            <p>
+              A microphone is not just a tool for amplification. It is a bridge connecting the speaker directly to the soul of the audience. When I step onto the stage, my goal is never just to guide an event. My goal is to shape the entire atmosphere and create an unforgettable shared experience.
+            </p>
+            <p>
+              From the roaring energy of large scale festivals like ONEFEST and Sagarmatha to intimate high stakes ceremonies, every single word is carefully crafted to resonate. The stage is a sanctuary where human connection takes place in its purest form.
+            </p>
+            <p className="text-gray-200 font-medium">
+              This unwavering dedication to the craft recently led to being awarded Terbaik Dua Duta Bahasa BINUS 2025.
+            </p>
+            <blockquote className="border-t border-b border-[#FF5C00]/30 py-8 my-16 font-playfair italic text-3xl text-gray-200">
+              "It is not just about what is said. It is about how those words make people feel."
+            </blockquote>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Symmetric Grid Gallery for MC Images */}
+      <section className="py-32 relative bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6 md:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {[
+              { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
+              { src: "/images/MC/Sagarmatha 9.0/MCSagarmatha9.0-1.jpg", title: "Sagarmatha 9.0" },
+              { src: "/images/MC/ONEFEST/StevenGlenn solo shot.jpg", title: "ONEFEST" },
+              { src: "/images/MC/Sweet 17 Kezia Novelina/MCSweet17Kezia.jpg", title: "Sweet 17 Parties" },
+              { src: "/images/MC/Manawa/MCManawaFest.jpg", title: "Manawa Fest" },
+              { src: "/images/MC/TKK 164 Zootastic/MCZootastic.jpg", title: "Zootastic" },
+              { src: "/images/MC/Nawasena/IMG_5486.jpg", title: "Nawasena" },
+              { src: "/images/MC/60th SMAK 1 Pesta Diamond/MCPestaDiamond60th.jpg", title: "Pesta Diamond" },
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ margin: "-20% 0px -20% 0px" }}
+                transition={{ duration: 1 }}
+                className="relative w-full aspect-[3/4] group rounded-2xl overflow-hidden shadow-2xl bg-[#111] will-change-transform will-change-opacity"
+              >
+                <Image src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
+                <div className="absolute inset-0 bg-transparent group-hover:bg-gray-900/60 transition-colors duration-1000 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <h3 className="font-playfair text-3xl md:text-5xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Outro Text in Gallery */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="w-full text-center mt-64 mb-32"
+          >
+            <h3 className="font-playfair text-5xl md:text-7xl mb-8">Thousands of faces.</h3>
+            <p className="text-2xl text-gray-400 font-light tracking-widest">One unified heartbeat.</p>
+          </motion.div>
+        </div>
+      </section>
+      {/* CHAPTER 3: THE LENS (Photography) */}
+      <section id="lens" className="py-40 md:py-64 relative bg-[#0a0a0a] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5 }}
+            className="max-w-3xl text-center mx-auto mb-40"
+          >
+            <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CHAPTER II</span>
+            <h2 className="font-playfair text-5xl md:text-7xl mb-12 leading-tight">The Lens</h2>
+            <div className="space-y-8 text-gray-400 text-xl leading-loose font-light text-left md:text-center">
+              <p>
+                There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
+              </p>
+              <p>
+                A moment is fleeting. It exists for a mere fraction of a second and then it is gone forever. But inside a frame, that moment is granted eternity. Whether capturing the gritty and rebellious energy of the Jackarmy photoshoot or documenting the subtle nuances of a quiet portrait, the core philosophy remains identical.
+              </p>
+              <p className="text-gray-200">
+                It is entirely about freezing time. It is about holding onto a feeling long after the reality has faded away.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Edge Reveal Image Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative h-[120vh] md:h-[150vh]">
+            <motion.div 
+              initial={{ opacity: 0, x: "-30vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+            <motion.div 
+              ref={middleLensRef}
+              initial={{ opacity: 0, y: "30vh" }}
+              animate={{
+                opacity: isMiddleLensInView ? 1 : 0,
+                y: isMiddleLensInView ? 0 : (hasMiddleEntered ? 0 : "30vh")
+              }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: "30vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CHAPTER 4: THE HEART (Leadership) */}
+      <section id="leadership" className="bg-[#050505]">
+        
+        {/* Intro to Leadership */}
+        <div className="py-40 px-6 md:px-20 max-w-4xl mx-auto text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block"
+          >
+            CHAPTER III
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="font-playfair text-5xl md:text-7xl mb-16"
+          >
+            The Heart
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+            className="text-gray-400 text-xl leading-loose max-w-3xl mx-auto font-light"
+          >
+            True leadership is never about standing at the absolute front and demanding attention. True leadership is about walking closely alongside others. It requires deep empathy, genuine connection, and the unwavering commitment to fostering an environment where every single person can discover their own voice.
+          </motion.p>
+        </div>
+
+        {/* Full-Screen Feature 1: FYP Leader B29 */}
+        <div className="min-h-screen flex items-center justify-center py-32 px-6 border-t border-[#111] relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FF5C00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-200px" }}
+            transition={{ duration: 1.5 }}
+            className="max-w-7xl mx-auto flex flex-col xl:flex-row gap-16 items-center relative z-10"
+          >
+            <div className="w-full xl:w-1/3">
+              <h3 className="font-playfair text-5xl md:text-7xl text-white mb-8">FYP Leader B29</h3>
+              <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
+              <p className="font-inter text-gray-400 text-lg md:text-xl leading-loose font-light">
+                Guiding and mentoring the next generation of students is a profound responsibility. It is a continuous journey of active listening, adapting to diverse needs, and helping others realize their own untapped potential through empathetic leadership. Watching individuals grow into confident contributors is the ultimate reward.
+              </p>
+            </div>
+            <div className="w-full xl:w-2/3 flex flex-col md:flex-row items-center justify-center gap-8 group/media">
+              {/* Picture Layer */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.8 }}
+                className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
+              >
+                <Image src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
+                <div className="absolute inset-0 bg-black/20 group-hover/media:bg-transparent transition-colors duration-1000" />
+              </motion.div>
+              {/* Video Layer */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.8 }}
+                className="relative w-[70%] md:w-auto md:h-[50vh] aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] border border-white/10 bg-[#111] flex-shrink-0"
+              >
+                <video 
+                  ref={videoRef}
+                  src="/images/FYP Leader/FYPJinglevid.MOV" 
+                  loop 
+                  playsInline 
+                  className="object-cover w-full h-full opacity-90 group-hover/media:opacity-100 transition-opacity duration-1000"
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Full-Screen Feature 2: Fostura */}
+        <div className="min-h-screen flex items-center justify-center py-20 px-6 border-t border-[#111] relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-bl from-[#FF5C00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-200px" }}
+            transition={{ duration: 1.5 }}
+            className="max-w-7xl mx-auto flex flex-col gap-16 items-center relative z-10"
+          >
+            <div className="order-2 w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+              {/* Left Photo */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
+              >
+                <Image src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+              </motion.div>
+
+              {/* Center Video */}
+              <motion.div 
+                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,92,0,0.15)] bg-[#111]"
+              >
+                <video 
+                  src="/images/Fostura/Steven Teaching.MOV" 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline 
+                  className="object-cover w-full h-full"
+                />
+              </motion.div>
+
+              {/* Right Photo */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
+              >
+                <Image src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+              </motion.div>
+            </div>
+            <div className="order-1 w-full max-w-4xl mx-auto text-center">
+              <h3 className="font-playfair text-5xl md:text-6xl text-white mb-8">Fostura</h3>
+              <div className="w-12 h-[1px] bg-[#FF5C00] mb-8 mx-auto" />
+              <p className="font-inter text-gray-400 text-lg leading-loose font-light mb-6">
+                Spearheading community driven initiatives requires a vision that extends far beyond the individual. It is entirely about building a safe space where creativity seamlessly meets purpose. In Fostura, the mission is to ensure that every single individual feels a deep sense of belonging and empowerment to contribute their unique ideas.
+              </p>
+              <p className="font-inter text-gray-400 text-lg leading-loose font-light">
+                Our inaugural project involved teaching the comprehensive course <span className="text-white font-medium">"Building The Basics of Public Speaking"</span>, empowering students to discover, refine, and confidently share their own voices on stage.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+      </section>
+
+      {/* AWARDS & RECOGNITION */}
+      <section id="awards" className="py-32 bg-[#0a0a0a] border-t border-[#111] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 text-center"
+          >
+            <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-6 block">HONORS</span>
+            <h2 className="font-playfair text-4xl md:text-6xl text-white">Awards & Achievements</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Award Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
+            >
+              <Image 
+                src="/images/Duta Bahasa BINUS 2025 Terbaik Dua Award.JPG" 
+                alt="Terbaik Dua Duta Bahasa BINUS 2025" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-[2000ms]"
+              />
+            </motion.div>
+
+            {/* Award Description */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+            >
+              <h3 className="font-playfair text-3xl md:text-5xl text-white mb-6 leading-snug">Terbaik Dua <br /> Duta Bahasa BINUS 2025</h3>
+              <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
+              <p className="font-inter text-gray-400 text-lg leading-loose font-light">
+                Recognized for excellence in communication, linguistic articulation, and public speaking. This achievement reflects a deep commitment to preserving and promoting the Indonesian language while effectively bridging cultural communication gaps on the main stage.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* THE FOOTER: THE HANDSHAKE */}
+      <footer id="contact" className="py-64 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden bg-[#020202]">
+        {/* Deep Background Glow */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[800px] h-[800px] bg-[#FF5C00] rounded-full blur-[200px] opacity-[0.04]" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+          className="relative z-10"
+        >
+          <p className="text-gray-500 tracking-[0.4em] text-sm mb-12 uppercase">Let us create something meaningful</p>
+          <a
+            href="mailto:contact@example.com"
+            className="block font-playfair text-5xl md:text-[10rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:from-[#FF5C00] hover:to-[#ff8a47] transition-all duration-1000 mb-24 text-shadow-glow"
+          >
+            LET'S TALK.
+          </a>
+        </motion.div>
+        
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 font-inter text-sm tracking-[0.3em] text-gray-500 relative z-10">
+          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+            <IconBrandLinkedin stroke={1.5} className="w-5 h-5" />
+            LINKEDIN
+          </a>
+          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+            <IconBrandInstagram stroke={1.5} className="w-5 h-5" />
+            INSTAGRAM
+          </a>
+          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+            <IconBrandYoutube stroke={1.5} className="w-5 h-5" />
+            YOUTUBE
           </a>
         </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }
