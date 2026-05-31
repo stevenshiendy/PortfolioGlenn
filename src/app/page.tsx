@@ -160,7 +160,8 @@ export default function Home() {
               >
                 <video 
                   ref={videoRef}
-                  src="/images/FYP Leader/FYPJinglevid.MOV" 
+                  src="/images/FYP Leader/FYPJinglevid_compressed.mp4" 
+                  preload="auto"
                   loop 
                   playsInline 
                   className="object-cover w-full h-full opacity-90 group-hover/media:opacity-100 transition-opacity duration-1000"
