@@ -51,7 +51,7 @@ export default function Home() {
             initial={{ opacity: 0, filter: "blur(20px)", scale: 0.9 }}
             animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
             transition={{ duration: 2.5, ease: "easeOut" }}
-            className="font-playfair text-5xl md:text-9xl font-bold tracking-tighter mb-10"
+            className="font-playfair text-2xl md:text-4xl font-bold tracking-tighter mb-10"
           >
             STEVEN GLENN SHIENDY
           </motion.h1>
@@ -61,7 +61,7 @@ export default function Home() {
             transition={{ duration: 2.5, delay: 1.5 }}
             className="flex flex-col gap-6"
           >
-            <p className="font-playfair italic text-2xl md:text-4xl text-gray-400">
+            <p className="font-playfair italic text-xl md:text-3xl text-gray-400">
               I bring events to life through public speaking, capture moments through photography, and build communities through leadership.
             </p>
             <p className="text-sm md:text-base tracking-[0.5em] text-gray-500 uppercase mt-8">
@@ -90,7 +90,7 @@ export default function Home() {
       <section id="leadership" className="bg-[#050505]">
         
         {/* Intro to Leadership */}
-        <div className="py-40 px-6 md:px-20 max-w-4xl mx-auto text-center">
+        <div className="py-40 px-6 md:px-20 max-w-3xl mx-auto text-center">
           <motion.span 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="font-playfair text-5xl md:text-7xl mb-16"
+            className="font-playfair text-4xl md:text-5xl mb-16"
           >
             Community Leadership
           </motion.h2>
@@ -113,7 +113,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, delay: 0.3 }}
-            className="text-gray-400 text-xl leading-loose max-w-3xl mx-auto font-light"
+            className="text-gray-400 text-base md:text-base leading-loose max-w-3xl mx-auto font-light"
           >
             True leadership is never about standing at the absolute front and demanding attention. True leadership is about walking closely alongside others. It requires deep empathy, genuine connection, and the unwavering commitment to fostering an environment where every single person can discover their own voice.
           </motion.p>
@@ -127,12 +127,12 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-200px" }}
             transition={{ duration: 1.5 }}
-            className="max-w-7xl mx-auto flex flex-col xl:flex-row gap-16 items-center relative z-10"
+            className="max-w-5xl mx-auto flex flex-col xl:flex-row gap-16 items-center relative z-10"
           >
             <div className="w-full xl:w-1/3">
-              <h3 className="font-playfair text-5xl md:text-7xl text-white mb-8">FYP Leader BINUSIAN 2029</h3>
+              <h3 className="font-playfair text-4xl md:text-5xl text-white mb-8">FYP Leader BINUSIAN 2029</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
-              <p className="font-inter text-gray-400 text-lg md:text-xl leading-loose font-light">
+              <p className="font-inter text-gray-400 text-lg md:text-base md:text-base leading-loose font-light">
                 Guiding and mentoring the next generation of students is a profound responsibility. It is a continuous journey of active listening, adapting to diverse needs, and helping others realize their own untapped potential through empathetic leadership. Watching individuals grow into confident contributors is the ultimate reward.
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
               >
-                <Image src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
+                <Image unoptimized src="/images/FYP Leader/FYP Leader.png" alt="FYP Leader" sizes="(max-width: 768px) 100vw, 66vw" width={2000} height={1500} className="w-full h-auto object-contain" />
                 <div className="absolute inset-0 bg-black/20 group-hover/media:bg-transparent transition-colors duration-1000" />
               </motion.div>
               {/* Video Layer */}
@@ -172,7 +172,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-200px" }}
             transition={{ duration: 1.5 }}
-            className="max-w-7xl mx-auto flex flex-col gap-16 items-center relative z-10"
+            className="max-w-5xl mx-auto flex flex-col gap-16 items-center relative z-10"
           >
             <div className="order-2 w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
               {/* Left Photo */}
@@ -180,7 +180,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
-                <Image src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+                <Image unoptimized src="/images/Fostura/TeamBehindFostura.jpg" alt="Fostura Team" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
 
               {/* Center Video */}
@@ -202,16 +202,16 @@ export default function Home() {
                 whileHover={{ scale: 1.02 }}
                 className="relative w-1/3 aspect-[3/4] rounded-xl overflow-hidden border border-white/5 shadow-2xl bg-[#111]"
               >
-                <Image src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
+                <Image unoptimized src="/images/Fostura/Steven Glenn Solo shot.JPG" alt="Steven Fostura" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-cover hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
             </div>
-            <div className="order-1 w-full max-w-4xl mx-auto text-center">
-              <h3 className="font-playfair text-5xl md:text-6xl text-white mb-8">Fostura</h3>
+            <div className="order-1 w-full max-w-3xl mx-auto text-center">
+              <h3 className="font-playfair text-2xl md:text-4xl text-white mb-8">Fostura</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8 mx-auto" />
-              <p className="font-inter text-gray-400 text-lg leading-loose font-light mb-6">
+              <p className="font-inter text-gray-400 text-base leading-loose font-light mb-6">
                 Spearheading community driven initiatives requires a vision that extends far beyond the individual. It is entirely about building a safe space where creativity seamlessly meets purpose. In Fostura, the mission is to ensure that every single individual feels a deep sense of belonging and empowerment to contribute their unique ideas.
               </p>
-              <p className="font-inter text-gray-400 text-lg leading-loose font-light mb-10">
+              <p className="font-inter text-gray-400 text-base leading-loose font-light mb-10">
                 Our inaugural project involved teaching the comprehensive course <span className="text-white font-medium">"Building The Basics of Public Speaking"</span>, empowering students to discover, refine, and confidently share their own voices on stage.
               </p>
               <a 
@@ -230,7 +230,7 @@ export default function Home() {
 
       {/* CHAPTER 2: THE VOICE (Extended Horizontal Scroll) */}
       <section id="mc" className="bg-[#050505] pt-40 pb-20 relative z-20">
-        <div className="max-w-4xl mx-auto px-6 md:px-20 text-center">
+        <div className="max-w-3xl mx-auto px-6 md:px-20 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -243,7 +243,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-playfair text-4xl md:text-7xl mb-12 leading-tight"
+            className="font-playfair text-2xl md:text-4xl mb-12 leading-tight"
           >
             Master of Ceremonies
           </motion.h2>
@@ -252,7 +252,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 1.5 }}
-            className="space-y-8 text-gray-400 text-xl leading-loose font-light"
+            className="space-y-8 text-gray-400 text-base md:text-base leading-loose font-light"
           >
             <p>
               For me, holding a microphone has never been about simply commanding a stage. It stems from an innate, deeply rooted passion for understanding people. Every event is an opportunity to look into the crowd, listen to their unwritten stories, and connect with individuals on a profoundly human level.
@@ -272,7 +272,7 @@ export default function Home() {
 
       {/* Symmetric Grid Gallery for MC Images */}
       <section className="py-32 relative bg-[#050505]">
-        <div className="max-w-7xl mx-auto px-6 md:px-20">
+        <div className="max-w-5xl mx-auto px-6 md:px-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {[
               { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
@@ -292,9 +292,9 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 className="relative w-full aspect-[3/4] group rounded-2xl overflow-hidden shadow-2xl bg-[#111] will-change-transform will-change-opacity"
               >
-                <Image src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
+                <Image unoptimized src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
                 <div className="absolute inset-0 bg-transparent group-hover:bg-gray-900/60 transition-colors duration-1000 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <h3 className="font-playfair text-3xl md:text-5xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
+                  <h3 className="font-playfair text-2xl md:text-4xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
                 </div>
               </motion.div>
             ))}
@@ -308,14 +308,14 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="w-full text-center mt-64 mb-32"
           >
-            <h3 className="font-playfair text-4xl md:text-6xl mb-8">Every stage is a conversation.</h3>
-            <p className="text-xl md:text-2xl text-gray-400 font-light tracking-widest">Every event is a memory.</p>
+            <h3 className="font-playfair text-2xl md:text-4xl mb-8">Every stage is a conversation.</h3>
+            <p className="text-lg md:text-xl text-gray-400 font-light tracking-widest">Every event is a memory.</p>
           </motion.div>
         </div>
       </section>
       {/* CHAPTER 3: THE LENS (Photography) */}
       <section id="lens" className="py-40 md:py-64 relative bg-[#0a0a0a] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-20">
+        <div className="max-w-5xl mx-auto px-6 md:px-20 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -324,8 +324,8 @@ export default function Home() {
             className="max-w-3xl text-center mx-auto mb-40"
           >
             <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CORE PILLARS</span>
-            <h2 className="font-playfair text-5xl md:text-7xl mb-12 leading-tight">Photography</h2>
-            <div className="space-y-8 text-gray-400 text-xl leading-loose font-light text-left md:text-center">
+            <h2 className="font-playfair text-4xl md:text-5xl mb-12 leading-tight">Photography</h2>
+            <div className="space-y-8 text-gray-400 text-base md:text-base leading-loose font-light text-left md:text-center">
               <p>
                 There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
               </p>
@@ -347,7 +347,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image unoptimized src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: "30vh" }}
@@ -356,7 +356,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image unoptimized src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, x: "30vw" }}
@@ -365,7 +365,7 @@ export default function Home() {
               transition={{ duration: 3.0, ease: "easeOut" }}
               className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
             >
-              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+              <Image unoptimized src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
             </motion.div>
           </div>
         </div>
@@ -373,7 +373,7 @@ export default function Home() {
 
       {/* AWARDS & RECOGNITION */}
       <section id="awards" className="py-32 bg-[#0a0a0a] border-t border-[#111] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 md:px-20 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -381,7 +381,7 @@ export default function Home() {
             className="mb-20 text-center"
           >
             <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-6 block">HONORS</span>
-            <h2 className="font-playfair text-4xl md:text-6xl text-white">Awards & Achievements</h2>
+            <h2 className="font-playfair text-2xl md:text-4xl text-white">Awards & Achievements</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -393,7 +393,7 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/5 will-change-transform"
             >
-              <Image 
+              <Image unoptimized 
                 src="/images/Duta Bahasa BINUS 2025 Terbaik Dua Award.JPG" 
                 alt="Terbaik Dua Duta Bahasa BINUS 2025" 
                 fill 
@@ -409,9 +409,9 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-              <h3 className="font-playfair text-3xl md:text-5xl text-white mb-6 leading-snug">Terbaik Dua <br /> Duta Bahasa BINUS 2025</h3>
+              <h3 className="font-playfair text-2xl md:text-4xl text-white mb-6 leading-snug">Terbaik Dua <br /> Duta Bahasa BINUS 2025</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
-              <p className="font-inter text-gray-400 text-lg leading-loose font-light">
+              <p className="font-inter text-gray-400 text-base leading-loose font-light">
                 Recognized for excellence in communication, linguistic articulation, and public speaking. This achievement reflects a deep commitment to preserving and promoting the Indonesian language while effectively bridging cultural communication gaps on the main stage.
               </p>
             </motion.div>
@@ -436,7 +436,7 @@ export default function Home() {
           <p className="text-gray-500 tracking-[0.4em] text-sm mb-6 uppercase">CONNECT WITH ME</p>
           <a
             href="mailto:glennshiendy@gmail.com"
-            className="block font-playfair text-7xl md:text-[14rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:from-[#FF5C00] hover:to-[#ff8a47] transition-all duration-1000 mb-12 text-shadow-glow"
+            className="block font-playfair text-6xl md:text-[9rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:from-[#FF5C00] hover:to-[#ff8a47] transition-all duration-1000 mb-12 text-shadow-glow"
           >
             LET'S TALK.
           </a>
