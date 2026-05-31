@@ -3,23 +3,18 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
-import { IconBrandLinkedin, IconBrandInstagram, IconBrandYoutube } from "@tabler/icons-react";
+import { IconBrandLinkedin, IconBrandInstagram, IconMail, IconBrandWhatsapp } from "@tabler/icons-react";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isVideoInView = useInView(videoRef, { margin: "-20%" });
 
-  const middleLensRef = useRef<HTMLDivElement>(null);
-  const isMiddleLensInView = useInView(middleLensRef, { margin: "-20% 0px -20% 0px" });
-  const [hasMiddleEntered, setHasMiddleEntered] = useState(false);
 
-  useEffect(() => {
-    if (isMiddleLensInView) setHasMiddleEntered(true);
-  }, [isMiddleLensInView]);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.volume = 0.5;
+      videoRef.current.volume = 0.75;
+      videoRef.current.muted = false;
       if (isVideoInView) {
         // Try playing unmuted. If browser blocks it (no interaction), fallback to muted so it at least plays visually.
         videoRef.current.play().catch(() => {
@@ -67,7 +62,7 @@ export default function Home() {
             className="flex flex-col gap-6"
           >
             <p className="font-playfair italic text-2xl md:text-4xl text-gray-400">
-              Every stage is a story. Every frame is a feeling.
+              I bring events to life through public speaking, capture moments through photography, and build communities through leadership.
             </p>
             <p className="text-sm md:text-base tracking-[0.5em] text-gray-500 uppercase mt-8">
               Emcee • Photographer • Leader
@@ -91,152 +86,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* CHAPTER 2: THE VOICE (Extended Horizontal Scroll) */}
-      <section id="mc" className="bg-[#050505] pt-40 pb-20 relative z-20">
-        <div className="max-w-4xl mx-auto px-6 md:px-20 text-center">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block"
-          >
-            CHAPTER I
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-playfair text-4xl md:text-7xl mb-12 leading-tight"
-          >
-            The Voice
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 1.5 }}
-            className="space-y-8 text-gray-400 text-xl leading-loose font-light"
-          >
-            <p>
-              A microphone is not just a tool for amplification. It is a bridge connecting the speaker directly to the soul of the audience. When I step onto the stage, my goal is never just to guide an event. My goal is to shape the entire atmosphere and create an unforgettable shared experience.
-            </p>
-            <p>
-              From the roaring energy of large scale festivals like ONEFEST and Sagarmatha to intimate high stakes ceremonies, every single word is carefully crafted to resonate. The stage is a sanctuary where human connection takes place in its purest form.
-            </p>
-            <p className="text-gray-200 font-medium">
-              This unwavering dedication to the craft recently led to being awarded Terbaik Dua Duta Bahasa BINUS 2025.
-            </p>
-            <blockquote className="border-t border-b border-[#FF5C00]/30 py-8 my-16 font-playfair italic text-3xl text-gray-200">
-              "It is not just about what is said. It is about how those words make people feel."
-            </blockquote>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Symmetric Grid Gallery for MC Images */}
-      <section className="py-32 relative bg-[#050505]">
-        <div className="max-w-7xl mx-auto px-6 md:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {[
-              { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
-              { src: "/images/MC/Sagarmatha 9.0/MCSagarmatha9.0-1.jpg", title: "Sagarmatha 9.0" },
-              { src: "/images/MC/ONEFEST/StevenGlenn solo shot.jpg", title: "ONEFEST" },
-              { src: "/images/MC/Sweet 17 Kezia Novelina/MCSweet17Kezia.jpg", title: "Sweet 17 Parties" },
-              { src: "/images/MC/Manawa/MCManawaFest.jpg", title: "Manawa Fest" },
-              { src: "/images/MC/TKK 164 Zootastic/MCZootastic.jpg", title: "Zootastic" },
-              { src: "/images/MC/Nawasena/IMG_5486.jpg", title: "Nawasena" },
-              { src: "/images/MC/60th SMAK 1 Pesta Diamond/MCPestaDiamond60th.jpg", title: "Pesta Diamond" },
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ margin: "-20% 0px -20% 0px" }}
-                transition={{ duration: 1 }}
-                className="relative w-full aspect-[3/4] group rounded-2xl overflow-hidden shadow-2xl bg-[#111] will-change-transform will-change-opacity"
-              >
-                <Image src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
-                <div className="absolute inset-0 bg-transparent group-hover:bg-gray-900/60 transition-colors duration-1000 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <h3 className="font-playfair text-3xl md:text-5xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Outro Text in Gallery */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="w-full text-center mt-64 mb-32"
-          >
-            <h3 className="font-playfair text-5xl md:text-7xl mb-8">Thousands of faces.</h3>
-            <p className="text-2xl text-gray-400 font-light tracking-widest">One unified heartbeat.</p>
-          </motion.div>
-        </div>
-      </section>
-      {/* CHAPTER 3: THE LENS (Photography) */}
-      <section id="lens" className="py-40 md:py-64 relative bg-[#0a0a0a] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.5 }}
-            className="max-w-3xl text-center mx-auto mb-40"
-          >
-            <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CHAPTER II</span>
-            <h2 className="font-playfair text-5xl md:text-7xl mb-12 leading-tight">The Lens</h2>
-            <div className="space-y-8 text-gray-400 text-xl leading-loose font-light text-left md:text-center">
-              <p>
-                There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
-              </p>
-              <p>
-                A moment is fleeting. It exists for a mere fraction of a second and then it is gone forever. But inside a frame, that moment is granted eternity. Whether capturing the gritty and rebellious energy of the Jackarmy photoshoot or documenting the subtle nuances of a quiet portrait, the core philosophy remains identical.
-              </p>
-              <p className="text-gray-200">
-                It is entirely about freezing time. It is about holding onto a feeling long after the reality has faded away.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Edge Reveal Image Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative h-[120vh] md:h-[150vh]">
-            <motion.div 
-              initial={{ opacity: 0, x: "-30vw" }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
-            >
-              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
-            </motion.div>
-            <motion.div 
-              ref={middleLensRef}
-              initial={{ opacity: 0, y: "30vh" }}
-              animate={{
-                opacity: isMiddleLensInView ? 1 : 0,
-                y: isMiddleLensInView ? 0 : (hasMiddleEntered ? 0 : "30vh")
-              }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
-            >
-              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, x: "30vw" }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ margin: "-20% 0px -20% 0px" }}
-              transition={{ duration: 3.0, ease: "easeOut" }}
-              className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
-            >
-              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* CHAPTER 4: THE HEART (Leadership) */}
       <section id="leadership" className="bg-[#050505]">
         
@@ -248,7 +97,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block"
           >
-            CHAPTER III
+            CORE PILLARS
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -257,7 +106,7 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="font-playfair text-5xl md:text-7xl mb-16"
           >
-            The Heart
+            Community Leadership
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -270,7 +119,7 @@ export default function Home() {
           </motion.p>
         </div>
 
-        {/* Full-Screen Feature 1: FYP Leader B29 */}
+        {/* Full-Screen Feature 1: FYP Leader BINUSIAN 2029 */}
         <div className="min-h-screen flex items-center justify-center py-32 px-6 border-t border-[#111] relative overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-br from-[#FF5C00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           <motion.div 
@@ -281,7 +130,7 @@ export default function Home() {
             className="max-w-7xl mx-auto flex flex-col xl:flex-row gap-16 items-center relative z-10"
           >
             <div className="w-full xl:w-1/3">
-              <h3 className="font-playfair text-5xl md:text-7xl text-white mb-8">FYP Leader B29</h3>
+              <h3 className="font-playfair text-5xl md:text-7xl text-white mb-8">FYP Leader BINUSIAN 2029</h3>
               <div className="w-12 h-[1px] bg-[#FF5C00] mb-8" />
               <p className="font-inter text-gray-400 text-lg md:text-xl leading-loose font-light">
                 Guiding and mentoring the next generation of students is a profound responsibility. It is a continuous journey of active listening, adapting to diverse needs, and helping others realize their own untapped potential through empathetic leadership. Watching individuals grow into confident contributors is the ultimate reward.
@@ -362,13 +211,164 @@ export default function Home() {
               <p className="font-inter text-gray-400 text-lg leading-loose font-light mb-6">
                 Spearheading community driven initiatives requires a vision that extends far beyond the individual. It is entirely about building a safe space where creativity seamlessly meets purpose. In Fostura, the mission is to ensure that every single individual feels a deep sense of belonging and empowerment to contribute their unique ideas.
               </p>
-              <p className="font-inter text-gray-400 text-lg leading-loose font-light">
+              <p className="font-inter text-gray-400 text-lg leading-loose font-light mb-10">
                 Our inaugural project involved teaching the comprehensive course <span className="text-white font-medium">"Building The Basics of Public Speaking"</span>, empowering students to discover, refine, and confidently share their own voices on stage.
               </p>
+              <a 
+                href="https://instagram.com/Fostura.id" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block px-10 py-4 border border-[#FF5C00]/50 text-white font-inter tracking-[0.2em] uppercase text-sm hover:bg-[#FF5C00] hover:border-[#FF5C00] hover:text-white transition-all duration-500 rounded-full bg-white/5 backdrop-blur-sm shadow-[0_0_20px_rgba(255,92,0,0.1)] hover:shadow-[0_0_30px_rgba(255,92,0,0.4)]"
+              >
+                Visit Us
+              </a>
             </div>
           </motion.div>
         </div>
 
+      </section>
+
+      {/* CHAPTER 2: THE VOICE (Extended Horizontal Scroll) */}
+      <section id="mc" className="bg-[#050505] pt-40 pb-20 relative z-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-20 text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block"
+          >
+            CORE PILLARS
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-playfair text-4xl md:text-7xl mb-12 leading-tight"
+          >
+            Master of Ceremonies
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 1.5 }}
+            className="space-y-8 text-gray-400 text-xl leading-loose font-light"
+          >
+            <p>
+              For me, holding a microphone has never been about simply commanding a stage. It stems from an innate, deeply rooted passion for understanding people. Every event is an opportunity to look into the crowd, listen to their unwritten stories, and connect with individuals on a profoundly human level.
+            </p>
+            <p>
+              Whether I am guiding the roaring energy of large-scale festivals like ONEFEST and Sagarmatha or hosting an intimate, high-stakes ceremony, my goal remains the same: to completely break down the barrier between the stage and the audience.
+            </p>
+            <p className="text-gray-200 font-medium">
+              The stage isn't a pedestal. It is a bridge to truly get to know the people standing in front of me.
+            </p>
+            <blockquote className="border-t border-b border-[#FF5C00]/30 py-8 my-16 font-playfair italic text-3xl text-gray-200">
+              "It is not just about what is spoken. It is about the authentic human connection forged in those fleeting moments."
+            </blockquote>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Symmetric Grid Gallery for MC Images */}
+      <section className="py-32 relative bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6 md:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {[
+              { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
+              { src: "/images/MC/Sagarmatha 9.0/MCSagarmatha9.0-1.jpg", title: "Sagarmatha 9.0" },
+              { src: "/images/MC/ONEFEST/StevenGlenn solo shot.jpg", title: "ONEFEST" },
+              { src: "/images/MC/Sweet 17 Kezia Novelina/MCSweet17Kezia.jpg", title: "Sweet 17 Parties" },
+              { src: "/images/MC/Manawa/MCManawaFest.jpg", title: "Manawa Fest" },
+              { src: "/images/MC/TKK 164 Zootastic/MCZootastic.jpg", title: "Zootastic" },
+              { src: "/images/MC/Nawasena/IMG_5486.jpg", title: "Nawasena" },
+              { src: "/images/MC/60th SMAK 1 Pesta Diamond/MCPestaDiamond60th.jpg", title: "Pesta Diamond" },
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ margin: "-20% 0px -20% 0px" }}
+                transition={{ duration: 1 }}
+                className="relative w-full aspect-[3/4] group rounded-2xl overflow-hidden shadow-2xl bg-[#111] will-change-transform will-change-opacity"
+              >
+                <Image src={item.src} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-all duration-1000 scale-105 group-hover:scale-100 group-hover:blur-sm" />
+                <div className="absolute inset-0 bg-transparent group-hover:bg-gray-900/60 transition-colors duration-1000 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <h3 className="font-playfair text-3xl md:text-5xl text-white font-bold tracking-widest text-center px-4">{item.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Outro Text in Gallery */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="w-full text-center mt-64 mb-32"
+          >
+            <h3 className="font-playfair text-4xl md:text-6xl mb-8">Every stage is a conversation.</h3>
+            <p className="text-xl md:text-2xl text-gray-400 font-light tracking-widest">Every event is a memory.</p>
+          </motion.div>
+        </div>
+      </section>
+      {/* CHAPTER 3: THE LENS (Photography) */}
+      <section id="lens" className="py-40 md:py-64 relative bg-[#0a0a0a] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5 }}
+            className="max-w-3xl text-center mx-auto mb-40"
+          >
+            <span className="text-[#FF5C00] text-sm tracking-[0.4em] font-semibold mb-8 block">CORE PILLARS</span>
+            <h2 className="font-playfair text-5xl md:text-7xl mb-12 leading-tight">Photography</h2>
+            <div className="space-y-8 text-gray-400 text-xl leading-loose font-light text-left md:text-center">
+              <p>
+                There is a profound unspoken truth hidden in every photograph. Through my lens, I actively seek out the unfiltered emotion and the quiet intensity that words often fail to capture. 
+              </p>
+              <p>
+                A moment is fleeting. It exists for a mere fraction of a second and then it is gone forever. But inside a frame, that moment is granted eternity. Whether capturing the gritty and rebellious energy of the Jackarmy photoshoot or documenting the subtle nuances of a quiet portrait, the core philosophy remains identical.
+              </p>
+              <p className="text-gray-200">
+                It is entirely about freezing time. It is about holding onto a feeling long after the reality has faded away.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Edge Reveal Image Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative h-[120vh] md:h-[150vh]">
+            <motion.div 
+              initial={{ opacity: 0, x: "-30vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[60vh] md:h-[80vh] mt-0 md:mt-20 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Collapse-5.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: "30vh" }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[70vh] md:h-[90vh] rounded-xl overflow-hidden shadow-2xl z-10 will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Domefree-1.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: "30vw" }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ margin: "-20% 0px -20% 0px" }}
+              transition={{ duration: 3.0, ease: "easeOut" }}
+              className="relative h-[50vh] md:h-[70vh] mt-0 md:mt-64 rounded-xl overflow-hidden shadow-2xl will-change-transform will-change-opacity"
+            >
+              <Image src="/images/Jackarmy Photoshoot/Territory-4.jpg" alt="Jackarmy Photography" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-[2000ms]" />
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* AWARDS & RECOGNITION */}
@@ -420,7 +420,7 @@ export default function Home() {
       </section>
 
       {/* THE FOOTER: THE HANDSHAKE */}
-      <footer id="contact" className="py-64 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden bg-[#020202]">
+      <footer id="contact" className="py-32 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden bg-[#020202]">
         {/* Deep Background Glow */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[800px] h-[800px] bg-[#FF5C00] rounded-full blur-[200px] opacity-[0.04]" />
@@ -433,27 +433,31 @@ export default function Home() {
           transition={{ duration: 1.5 }}
           className="relative z-10"
         >
-          <p className="text-gray-500 tracking-[0.4em] text-sm mb-12 uppercase">Let us create something meaningful</p>
+          <p className="text-gray-500 tracking-[0.4em] text-sm mb-6 uppercase">CONNECT WITH ME</p>
           <a
-            href="mailto:contact@example.com"
-            className="block font-playfair text-5xl md:text-[10rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:from-[#FF5C00] hover:to-[#ff8a47] transition-all duration-1000 mb-24 text-shadow-glow"
+            href="mailto:glennshiendy@gmail.com"
+            className="block font-playfair text-7xl md:text-[14rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 hover:from-[#FF5C00] hover:to-[#ff8a47] transition-all duration-1000 mb-12 text-shadow-glow"
           >
             LET'S TALK.
           </a>
         </motion.div>
         
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 font-inter text-sm tracking-[0.3em] text-gray-500 relative z-10">
-          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+          <a href="https://linkedin.com/in/stevenglennshiendy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
             <IconBrandLinkedin stroke={1.5} className="w-5 h-5" />
             LINKEDIN
           </a>
-          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+          <a href="https://instagram.com/stvenglenn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
             <IconBrandInstagram stroke={1.5} className="w-5 h-5" />
             INSTAGRAM
           </a>
-          <a href="#" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
-            <IconBrandYoutube stroke={1.5} className="w-5 h-5" />
-            YOUTUBE
+          <a href="mailto:glennshiendy@gmail.com" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+            <IconMail stroke={1.5} className="w-5 h-5" />
+            GMAIL
+          </a>
+          <a href="https://wa.me/6285156262813" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-[#FF5C00] transition-colors duration-500">
+            <IconBrandWhatsapp stroke={1.5} className="w-5 h-5" />
+            WHATSAPP
           </a>
         </div>
       </footer>

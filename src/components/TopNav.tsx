@@ -5,9 +5,9 @@ import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 export default function TopNav() {
   const navItems = [
-    { label: "The Voice", href: "#mc" },
-    { label: "The Lens", href: "#lens" },
-    { label: "The Heart", href: "#leadership" },
+    { label: "Leadership", href: "#leadership" },
+    { label: "Master of Ceremonies", href: "#mc" },
+    { label: "Photography", href: "#lens" },
     { label: "Honors", href: "#awards" },
   ];
 
