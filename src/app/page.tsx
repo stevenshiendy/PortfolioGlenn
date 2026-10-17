@@ -446,7 +446,7 @@ export default function Home() {
             </Confetti>
 
             <div>
-              <span className="inline-block rounded-full bg-mist px-3 py-1 text-xs font-semibold text-ink">2025</span>
+              <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-mist-light">2025</span>
               <h3 className="mt-5 font-display text-3xl md:text-4xl font-semibold leading-tight tracking-tight">
                 Terbaik Dua <br /> <span className="text-brand-soft">Duta Bahasa BINUS 2025</span>
               </h3>
