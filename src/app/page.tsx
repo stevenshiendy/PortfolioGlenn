@@ -19,7 +19,7 @@ import Marquee from "@/components/story/Marquee";
 import QuoteCard from "@/components/story/QuoteCard";
 import StageReel from "@/components/story/StageReel";
 import FilmStrip from "@/components/story/FilmStrip";
-import CountUp from "@/components/story/CountUp";
+import BrandCard from "@/components/story/BrandCard";
 
 const MC_EVENTS = [
   { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
@@ -284,89 +284,27 @@ export default function Home() {
           className="mx-auto mt-12 max-w-4xl text-center font-display text-2xl md:text-4xl font-medium leading-snug tracking-tight"
         />
 
-        {/* Kaaramel Juice */}
-        <FocusCard className="mx-auto mt-20 max-w-6xl overflow-hidden p-6 md:p-12">
-          <span aria-hidden className="pointer-events-none absolute -right-6 -bottom-10 select-none font-display font-extrabold leading-none tracking-tighter text-[28vw] md:text-[16rem] text-mist/[0.04]">
-            2009
-          </span>
-          <div className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-            <div>
-              <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-mist-light">No. 1 Dessert Juice in Indonesia</span>
-              <h3 className="mt-6">
-                <span className="sr-only">Kaaramel Juice</span>
-                <Image
-                  src="/images/Brands/KJ White.png"
-                  alt=""
-                  width={924}
-                  height={310}
-                  sizes="(max-width: 768px) 70vw, 360px"
-                  className="h-auto w-[min(70vw,360px)]"
-                />
-              </h3>
-              <p className="mt-2 font-serif text-2xl md:text-3xl italic text-brand-soft">Dessert you can drink.</p>
-              <p className="mt-6 max-w-xl text-mist/70 text-base md:text-lg leading-relaxed">
-                It began with a family&apos;s love for daily fruit juice and a Taiwanese habit: a cold, refreshing drink right after a meal. Blend the two and you get the dessert smoothie: thick, indulgent and guilt-free. Not just a new drink, a whole new category.
-              </p>
-              <a
-                href="https://kaarameljuice.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={socialPill}
-              >
-                kaarameljuice.com
-                <IconArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
-
-            <dl className="grid grid-cols-3 gap-3 md:gap-4">
-              {[
-                { value: 2009, from: 1990, label: "First pour, 12 April" },
-                { value: 2013, from: 2000, label: "Wirausaha Mandiri award" },
-                { value: 3, from: 0, label: "Cities: Jakarta, Bandung, Gading Serpong" },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-[1.5rem] border border-mist/10 bg-mist/[0.06] p-4 md:p-5">
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-display text-2xl md:text-4xl font-semibold tracking-tight text-mist-light">
-                    <CountUp from={stat.from} to={stat.value} />
-                  </dd>
-                  <p className="mt-2 text-xs md:text-sm text-mist/60 leading-snug" aria-hidden>{stat.label}</p>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </FocusCard>
-
-        {/* Hanashuya */}
-        <FocusCard className="mx-auto mt-16 max-w-6xl overflow-hidden p-6 md:p-12">
-          <div className="relative max-w-2xl">
-            <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-mist-light">Japanese-style cream puffs</span>
-            <h3 className="mt-6">
-              <span className="sr-only">Hanashuya</span>
-              <Image
-                src="/images/Brands/Hanashuya Logo Web.png"
-                alt=""
-                width={693}
-                height={756}
-                sizes="200px"
-                className="h-[150px] md:h-[190px] w-auto brightness-0 invert"
-              />
-            </h3>
-            <p className="mt-4 font-serif text-2xl md:text-3xl italic text-brand-soft">Where every crunch tells a story.</p>
-            <p className="mt-6 text-mist/70 text-base md:text-lg leading-relaxed">
-              Golden shells, creamy centres and a little mood booster in every bite. Hanashuya brings the Japanese cream puff to Bandung, made to be shared and remembered.
-            </p>
-            <p className="mt-4 text-sm text-mist/55">Papaya Fresh Gallery, Bandung</p>
-            <a
-              href="https://instagram.com/hanashuya.id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={socialPill}
-            >
-              @hanashuya.id
-              <IconArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </div>
-        </FocusCard>
+        {/* Two brands, side by side with matching layouts */}
+        <div className="mx-auto mt-20 grid max-w-6xl gap-6 lg:grid-cols-2 lg:items-stretch">
+          <BrandCard
+            name="Kaaramel Juice"
+            badge="No. 1 Dessert Juice in Indonesia"
+            logo={{ src: "/images/Brands/KJ White.png", width: 924, height: 310, className: "h-[90px] md:h-[112px] max-w-full object-contain object-left" }}
+            tagline="Dessert you can drink."
+            story="It began with a family's love for daily fruit juice and a Taiwanese habit: a cold, refreshing drink right after a meal. Blend the two and you get the dessert smoothie: thick, indulgent and guilt-free. Not just a new drink, a whole new category."
+            facts={["Since 12 April 2009", "Wirausaha Mandiri 2013", "Jakarta, Bandung, Gading Serpong"]}
+            link={{ href: "https://kaarameljuice.com", label: "kaarameljuice.com" }}
+          />
+          <BrandCard
+            name="Hanashuya"
+            badge="Japanese-style cream puffs"
+            logo={{ src: "/images/Brands/Hanashuya Logo Web.png", width: 693, height: 756, className: "h-full brightness-0 invert" }}
+            tagline="Where every crunch tells a story."
+            story="Golden shells, creamy centres and a little mood booster in every bite. Hanashuya brings the Japanese cream puff to Bandung, made to be shared and remembered."
+            facts={["Papaya Fresh Gallery, Bandung"]}
+            link={{ href: "https://instagram.com/hanashuya.id", label: "@hanashuya.id" }}
+          />
+        </div>
       </section>
 
       {/* CHAPTER 3: THE VOICE (Master of Ceremonies) */}
