@@ -1,17 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-orange: #FF5C00;
-  
-  --font-playfair: var(--font-playfair-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Palette: Nox Noir, Royal Amethyst, Steel Mist (+ tints/shades for depth) */
+  --color-ink: #141414;
+  --color-brand: #7E49B3;
+  --color-brand-deep: #5B2F8E;
+  --color-brand-soft: #B9A2D6;
+  --color-mist: #CFCFCF;
+  --color-mist-light: #EAEAEA;
+  --color-mist-deep: #A9A9A9;
+
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  /* Stacked-card "lip" under rounded slabs, like a pressable tile */
+  --shadow-lip-mist: 0 8px 0 0 #A9A9A9;
+  --shadow-lip-ink: 0 8px 0 0 #000000;
+  --shadow-lip-brand: 0 8px 0 0 #5B2F8E;
+  --shadow-lip-sm-mist: 0 4px 0 0 #A9A9A9;
+  --shadow-lip-sm-ink: 0 4px 0 0 #000000;
+  --shadow-lip-sm-brand: 0 4px 0 0 #5B2F8E;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
 
 @layer base {
+  html {
+    background-color: #141414;
+  }
+
   body {
-    background-color: #050505;
-    color: #FFFFFF;
-    font-family: var(--font-inter);
+    color: #EAEAEA;
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-touch-callout: none;
@@ -26,16 +53,16 @@
   }
 }
 
-/* Custom Utilities for Brutalist / Minimalist effects */
-@layer utilities {
-  .text-shadow-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  }
-}
-
 /* Hide native cursor globally on desktop to prevent overlap with CustomCursor */
 @media (min-width: 768px) {
   * {
     cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-spin-slow {
+    animation: none;
   }
 }

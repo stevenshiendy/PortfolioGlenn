@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Instrument_Serif, Poppins } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
 import TopNav from "@/components/TopNav";
+import Providers from "@/components/Providers";
+import Backdrop from "@/components/story/Backdrop";
+import ChapterRail from "@/components/story/ChapterRail";
 import "./globals.css";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const playfair = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-playfair-display",
-  style: ['normal', 'italic'],
+  variable: "--font-instrument",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -29,13 +33,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
-      <body className="antialiased font-inter md:cursor-none">
-        <div className="hidden md:block">
-          <CustomCursor />
-        </div>
-        <TopNav />
-        {children}
+    <html lang="en" className={`${poppins.variable} ${instrumentSerif.variable} scroll-smooth`}>
+      <body className="antialiased font-body md:cursor-none">
+        <Providers>
+          <div className="hidden md:block">
+            <CustomCursor />
+          </div>
+          <Backdrop />
+          <TopNav />
+          {children}
+          <ChapterRail />
+        </Providers>
       </body>
     </html>
   );
