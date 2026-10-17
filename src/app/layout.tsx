@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Poppins } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
 import TopNav from "@/components/TopNav";
@@ -25,6 +25,13 @@ export const metadata: Metadata = {
   icons: {
     icon: "/Steven Glenn Logo.svg",
   },
+};
+
+// Let the page draw edge to edge, so Safari's floating toolbar sits over the
+// background instead of over a flat strip of color
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  themeColor: "#141414",
 };
 
 export default function RootLayout({

@@ -12,7 +12,7 @@ export default function Backdrop() {
   const hazeY = useTransform(p, [0, 1], ["0vh", "-60vh"]);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-ink">
+    <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-lvh overflow-hidden bg-ink">
       <motion.div
         style={{ x: glowX, y: glowY }}
         className="absolute left-[10vw] top-0 h-[110vh] w-[90vw] opacity-60 bg-[radial-gradient(closest-side,#7E49B3,rgba(126,73,179,0.45)_45%,transparent)] will-change-transform"

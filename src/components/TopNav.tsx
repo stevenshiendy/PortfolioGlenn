@@ -29,7 +29,7 @@ export default function TopNav() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: hidden ? "-160%" : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 left-3 right-3 md:left-6 md:right-6 z-[100] mx-auto max-w-6xl pl-4 md:pl-5 pr-1.5 py-1.5 flex items-center justify-between gap-3 rounded-full border border-mist/15 bg-ink/50 backdrop-blur-xl"
+      className="fixed top-[max(1rem,env(safe-area-inset-top))] left-3 right-3 md:left-6 md:right-6 z-[100] mx-auto max-w-6xl pl-4 md:pl-5 pr-1.5 py-1.5 flex items-center justify-between gap-3 rounded-full border border-mist/15 bg-ink/50 backdrop-blur-xl"
     >
       {/* Left: Name */}
       <a href="#home" className="font-serif text-lg md:text-2xl leading-none whitespace-nowrap text-mist-light hover:text-brand-soft transition-colors">

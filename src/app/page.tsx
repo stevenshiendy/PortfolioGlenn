@@ -386,7 +386,7 @@ export default function Home() {
       </section>
 
       {/* THE FOOTER: THE HANDSHAKE */}
-      <footer id="contact" className="relative px-4 md:px-10 pt-16 pb-10 text-center">
+      <footer id="contact" className="relative px-4 md:px-10 pt-16 pb-[max(2.5rem,calc(env(safe-area-inset-bottom)+1.5rem))] text-center">
         <p className="text-sm text-mist/60">The end of the story... or the start of ours?</p>
         <motion.a
           href="mailto:glennshiendy@gmail.com"
