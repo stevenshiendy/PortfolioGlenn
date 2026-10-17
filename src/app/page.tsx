@@ -238,7 +238,7 @@ export default function Home() {
         {/* Feature 2: Fostura */}
         <FocusCard className="mx-auto mt-16 max-w-6xl p-6 md:p-12">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <span className="inline-block rounded-full bg-mist px-3 py-1 text-xs font-semibold text-ink">Founder story</span>
+            <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-mist-light">Founder story</span>
             <h3 className="mt-5 font-display text-3xl md:text-5xl font-semibold tracking-tight">Fostura</h3>
             <p className="mt-6 text-mist/70 text-base md:text-lg leading-relaxed">
               Spearheading community driven initiatives requires a vision that extends far beyond the individual. It is entirely about building a safe space where creativity seamlessly meets purpose. In Fostura, the mission is to ensure that every single individual feels a deep sense of belonging and empowerment to contribute their unique ideas.
