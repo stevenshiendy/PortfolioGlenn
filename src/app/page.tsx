@@ -10,7 +10,6 @@ import {
   IconBrandWhatsapp,
   IconArrowDown,
   IconArrowRight,
-  IconTrophy,
   IconArrowUpRight,
 } from "@tabler/icons-react";
 import ChapterHeading from "@/components/story/ChapterHeading";
@@ -20,7 +19,6 @@ import Marquee from "@/components/story/Marquee";
 import QuoteCard from "@/components/story/QuoteCard";
 import StageReel from "@/components/story/StageReel";
 import FilmStrip from "@/components/story/FilmStrip";
-import Confetti from "@/components/story/Confetti";
 import CountUp from "@/components/story/CountUp";
 
 const MC_EVENTS = [
@@ -424,26 +422,15 @@ export default function Home() {
 
         <FocusCard className="mx-auto mt-16 max-w-5xl p-6 md:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 items-center">
-            <Confetti>
-              <div className={`${mediaFrame} aspect-[4/3]`}>
-                <Image
-                  src="/images/Duta Bahasa BINUS 2025 Terbaik Dua Award.JPG"
-                  alt="Terbaik Dua Duta Bahasa BINUS 2025"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              <motion.div
-                initial={{ scale: 0, rotate: -60 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 220, damping: 16, delay: 0.3 }}
-                className="absolute -top-6 -right-3 md:-right-6 z-30 grid h-20 w-20 place-items-center rounded-full bg-brand text-mist-light shadow-[0_12px_30px_-6px_rgba(126,73,179,0.7)]"
-              >
-                <IconTrophy className="h-9 w-9" stroke={1.8} />
-              </motion.div>
-            </Confetti>
+            <div className={`${mediaFrame} aspect-[4/3]`}>
+              <Image
+                src="/images/Duta Bahasa BINUS 2025 Terbaik Dua Award.JPG"
+                alt="Terbaik Dua Duta Bahasa BINUS 2025"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
 
             <div>
               <span className="inline-block rounded-full bg-brand px-3 py-1 text-xs font-semibold text-mist-light">2025</span>
