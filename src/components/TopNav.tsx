@@ -1,50 +1,73 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { useState } from "react";
+import { useActiveChapter } from "./useActiveChapter";
 
 export default function TopNav() {
+  const active = useActiveChapter();
   const navItems = [
-    { label: "Leadership", href: "#leadership" },
-    { label: "Master of Ceremonies", href: "#mc" },
-    { label: "Photography", href: "#lens" },
-    { label: "Honors", href: "#awards" },
+    { label: "Leadership", href: "#leadership", id: "leadership" },
+    { label: "Business", href: "#business", id: "business" },
+    { label: "Master of Ceremonies", href: "#mc", id: "mc" },
+    { label: "Photography", href: "#lens", id: "lens" },
+    { label: "Honors", href: "#awards", id: "awards" },
   ];
 
+  // Tuck the header away while reading down, bring it back on any scroll up
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    if (Math.abs(y - prev) < 4) return;
+    setHidden(y > prev && y > 120);
+  });
+
   return (
-    <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-[100] px-6 md:px-12 py-5 flex items-center justify-between bg-[#050505]/60 backdrop-blur-xl border-b border-white/5"
+    <motion.header
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: hidden ? "-160%" : 0, opacity: hidden ? 0 : 1 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-4 left-3 right-3 md:left-6 md:right-6 z-[100] mx-auto max-w-6xl pl-4 md:pl-5 pr-1.5 py-1.5 flex items-center justify-between gap-3 rounded-full border border-mist/15 bg-ink/50 backdrop-blur-xl"
     >
-      {/* Left: Logo */}
-      <a href="#home" className="font-playfair text-xl md:text-2xl tracking-wider text-white hover:text-[#FF5C00] transition-colors">
-        Steven Glenn
+      {/* Left: Name */}
+      <a href="#home" className="font-serif text-lg md:text-2xl leading-none whitespace-nowrap text-mist-light hover:text-brand-soft transition-colors">
+        Steven Glenn Shiendy
       </a>
 
-      {/* Middle: Chapters (hidden on very small screens) */}
-      <nav className="hidden lg:flex items-center gap-12 font-inter text-xs tracking-[0.2em] text-gray-400">
-        {navItems.map((item, idx) => (
-          <a 
-            key={idx} 
-            href={item.href}
-            className="hover:text-white transition-colors duration-300"
-          >
-            {item.label.toUpperCase()}
-          </a>
-        ))}
+      {/* Middle: Chapters (hidden on smaller screens) */}
+      <nav className="hidden lg:flex items-center gap-1 text-sm font-medium">
+        {navItems.map((item) => {
+          const isActive = active === item.id;
+          return (
+            <a
+              key={item.id}
+              href={item.href}
+              className={`relative rounded-full px-4 py-2 transition-colors duration-300 ${isActive ? "text-ink" : "text-mist/70 hover:text-mist-light"}`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full bg-mist"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                />
+              )}
+              <span className="relative">{item.label}</span>
+            </a>
+          );
+        })}
       </nav>
 
       {/* Right: Connect Button */}
-      <a 
+      <a
         href="https://wa.me/6285156262813"
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-2 px-6 py-2.5 bg-white text-black font-inter text-xs font-bold tracking-[0.2em] rounded-full hover:bg-[#FF5C00] hover:text-white transition-all duration-500 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,92,0,0.4)]"
+        className="group flex shrink-0 items-center gap-2 px-3.5 md:px-5 py-2.5 bg-mist text-ink text-sm font-semibold rounded-full hover:bg-brand hover:text-mist-light transition-colors duration-300"
       >
-        <IconBrandWhatsapp stroke={2} className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-        CONNECT
+        <IconBrandWhatsapp stroke={2} className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
+        Connect
       </a>
     </motion.header>
   );
