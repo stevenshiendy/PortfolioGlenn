@@ -16,7 +16,7 @@ export default function FocusCard({ children, className = "" }: { children: Reac
     <motion.div
       ref={ref}
       style={reduceMotion ? undefined : { opacity, scale }}
-      className={`relative rounded-[2rem] md:rounded-[2.5rem] border border-mist/15 bg-ink/45 backdrop-blur-xl ${className}`}
+      className={`relative rounded-[2rem] md:rounded-[2.5rem] border border-mist/15 bg-ink/60 ${className}`}
     >
       {children}
     </motion.div>

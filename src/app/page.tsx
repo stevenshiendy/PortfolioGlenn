@@ -20,6 +20,7 @@ import QuoteCard from "@/components/story/QuoteCard";
 import StageReel from "@/components/story/StageReel";
 import FilmStrip from "@/components/story/FilmStrip";
 import BrandCard from "@/components/story/BrandCard";
+import LazyVideo from "@/components/story/LazyVideo";
 
 const MC_EVENTS = [
   { src: "/images/MC/SAGARMATHA 8.0/MCSagarmatha9.0.jpg", title: "Sagarmatha 8.0" },
@@ -34,9 +35,9 @@ const MC_EVENTS = [
 
 const LENS_WORK = [
   { src: "/images/Photography & Videography/JENETBDAY-4.JPG", alt: "Event Photography" },
-  { src: "/images/Photography & Videography/KJ 2.MP4", alt: "Event Videography", video: true },
+  { src: "/images/Photography & Videography/KJ 2 Web.mp4", poster: "/images/Photography & Videography/KJ 2 Web.jpg", alt: "Event Videography", video: true },
   { src: "/images/Photography & Videography/Territory-4.jpg", alt: "Creative Photography" },
-  { src: "/images/Photography & Videography/ADERA 3.MOV", alt: "Creative Videography", video: true },
+  { src: "/images/Photography & Videography/ADERA 3 Web.mp4", poster: "/images/Photography & Videography/ADERA 3 Web.jpg", alt: "Creative Videography", video: true },
   { src: "/images/Photography & Videography/DSC01890.JPG", alt: "Photography Portrait" },
 ];
 
@@ -222,8 +223,9 @@ export default function Home() {
               <div className={`${mediaFrame} flex-1 md:flex-none md:w-auto md:h-[50vh] aspect-[9/16]`}>
                 <video
                   ref={videoRef}
-                  src="/images/FYP Leader/FYPJinglevid_compressed.mp4"
-                  preload="auto"
+                  src="/images/FYP Leader/FYP Jingle Web.mp4"
+                  poster="/images/FYP Leader/FYP Jingle Web.jpg"
+                  preload="none"
                   loop
                   playsInline
                   className="object-cover w-full h-full"
@@ -259,7 +261,7 @@ export default function Home() {
           <div className="flex flex-row flex-wrap md:flex-nowrap items-center justify-center gap-3 md:gap-6">
             {[
               { kind: "img", src: "/images/Fostura/TeamBehindFostura.jpg", alt: "Fostura Team", cls: "order-1 w-[47%] md:w-1/3" },
-              { kind: "video", src: "/images/Fostura/Steven Teaching.MOV", alt: "Steven teaching", cls: "order-3 md:order-2 w-[75%] md:w-1/3 mt-2 md:mt-0 md:-translate-y-6" },
+              { kind: "video", src: "/images/Fostura/Steven Teaching Web.mp4", poster: "/images/Fostura/Steven Teaching Web.jpg", alt: "Steven teaching", cls: "order-3 md:order-2 w-[75%] md:w-1/3 mt-2 md:mt-0 md:-translate-y-6" },
               { kind: "img", src: "/images/Fostura/Steven Glenn Solo shot.JPG", alt: "Steven Fostura", cls: "order-2 md:order-3 w-[47%] md:w-1/3" },
             ].map((m, i) => (
               <FadeUp key={m.src} delay={i * 0.1} className={m.cls}>
@@ -267,7 +269,7 @@ export default function Home() {
                   {m.kind === "img" ? (
                     <Image src={m.src} alt={m.alt} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
                   ) : (
-                    <video src={m.src} autoPlay muted loop playsInline className="object-cover w-full h-full" />
+                    <LazyVideo src={m.src} poster={m.poster ?? ""} className="object-cover w-full h-full" />
                   )}
                 </div>
               </FadeUp>

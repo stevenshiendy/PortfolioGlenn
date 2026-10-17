@@ -15,18 +15,18 @@ export default function Backdrop() {
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-ink">
       <motion.div
         style={{ x: glowX, y: glowY }}
-        className="absolute left-[10vw] top-0 h-[110vh] w-[90vw] rounded-full bg-brand opacity-60 blur-[140px]"
+        className="absolute left-[10vw] top-0 h-[110vh] w-[90vw] opacity-60 bg-[radial-gradient(closest-side,#7E49B3,rgba(126,73,179,0.45)_45%,transparent)] will-change-transform"
       />
-      <motion.div style={{ y: hazeY }} className="absolute inset-0">
+      <motion.div style={{ y: hazeY }} className="absolute inset-0 will-change-transform">
         <motion.div
           animate={{ x: ["0vw", "6vw", "0vw"] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[55vw] top-[70vh] h-[40vh] w-[50vw] rounded-full bg-mist opacity-[0.12] blur-[90px]"
+          className="absolute left-[55vw] top-[70vh] h-[40vh] w-[50vw] opacity-[0.12] bg-[radial-gradient(closest-side,#CFCFCF,transparent)]"
         />
         <motion.div
           animate={{ x: ["0vw", "-5vw", "0vw"] }}
           transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-[10vw] top-[120vh] h-[45vh] w-[45vw] rounded-full bg-mist opacity-[0.1] blur-[100px]"
+          className="absolute -left-[10vw] top-[120vh] h-[45vh] w-[45vw] opacity-[0.1] bg-[radial-gradient(closest-side,#CFCFCF,transparent)]"
         />
       </motion.div>
       <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-gradient-to-t from-brand-deep/30 to-transparent" />

@@ -3,8 +3,9 @@
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import LazyVideo from "./LazyVideo";
 
-type Frame = { src: string; alt: string; video?: boolean };
+type Frame = { src: string; alt: string; video?: boolean; poster?: string };
 
 // The section pins in place while the frames glide sideways, like scrubbing a reel
 export default function FilmStrip({ frames }: { frames: Frame[] }) {
@@ -50,7 +51,7 @@ export default function FilmStrip({ frames }: { frames: Frame[] }) {
               className={`group relative h-[62vh] md:h-[70vh] aspect-[9/16] shrink-0 overflow-hidden rounded-[1.75rem] border border-mist/15 bg-ink ${i % 2 ? "md:translate-y-8" : "md:-translate-y-6"}`}
             >
               {f.video ? (
-                <video src={f.src} autoPlay muted loop playsInline className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+                <LazyVideo src={f.src} poster={f.poster ?? ""} className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
               ) : (
                 <Image src={f.src} alt={f.alt} fill sizes="(max-width: 768px) 60vw, 25vw" className="object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
               )}
